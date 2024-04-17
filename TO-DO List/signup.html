@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Page</title>
+    <link rel="shortcut icon" href="css/favicon.ico" type="image/x-icon" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: rgb(158, 218, 226);
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .outerbox {
+        width: 500px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        animation: slide-up 1.5s ease-out; /* Animation added */
+      }
+
+      @keyframes slide-up {
+        from {
+          transform: translateY(50px); /* Initial position below the screen */
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0); /* Final position at the center */
+          opacity: 1;
+        }
+      }
+
+      .outerbox h2 {
+        text-align: center;
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .innerbox {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .signup-header h1 {
+        font-size: 2.2rem;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .signup-header p {
+        font-size: 14px;
+        color: #666;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .signup-body p {
+        margin: 12px 0;
+      }
+
+      .signup-body p label {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .signup-body p input {
+        width: calc(100% - 24px);
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-top: 4px;
+      }
+
+      .signup-body p input[type="submit"] {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+      }
+
+      .signup-body p input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      .signup-footer p {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+      }
+
+      .signup-footer p a {
+        color: #007bff;
+        font-weight: bold;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .signup-footer p a:hover {
+        color: #0056b3;
+      }
+    </style>
+    <script>
+      function redirectToSignIn() {
+        // Redirect to the sign-in page
+        window.location.href = "signin.html";
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+      document
+        .getElementById("delayedLink")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          setTimeout(function () {
+            window.location.href = event.target.href;
+          }, 6000);
+        });
+    </script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+    <!-- Sign-up form -->
+    <div class="outerbox">
+      <h2>Notification Alert System</h2>
+      <div class="innerbox">
+        <header class="signup-header">
+          <h1>Signup</h1>
+        </header>
+        <main class="signup-body">
+          <form id="signupForm" action="#">
+            <p>
+              <label for="fullname"><b>Name</b></label>
+              <input
+                type="text"
+                id="fullname"
+                placeholder="Your name"
+                required
+              />
+            </p>
+            <p>
+              <label for="email"><b>Email</b></label>
+              <input
+                type="email"
+                id="signup_email"
+                placeholder="Your email"
+                required
+              />
+            </p>
+            <p>
+              <label for="password"
+                ><b><ion-icon name="lock-closed"></ion-icon>Password</b></label
+              >
+              <input
+                type="password"
+                id="signup_password"
+                placeholder="At least 6 characters"
+                required
+              />
+            </p>
+            <p>
+              <label for="confirm_password"
+                ><b
+                  ><ion-icon name="lock-closed"></ion-icon>Confirm Password</b
+                ></label
+              >
+              <input
+                type="password"
+                id="confirm_password"
+                placeholder="Confirm Password"
+                required
+              />
+            </p>
+            <p>
+              <input type="submit" id="signupSubmit" value="Create Account" />
+            </p>
+          </form>
+        </main>
+        <footer class="signup-footer">
+          <p>
+            Already have an account?
+            <a href="signin.html" id="delayedLink"
+              >Login<ion-icon name="person"></ion-icon
+            ></a>
+          </p>
+          <button onclick="redirectToSignIn()"></button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Firebase configuration and authentication -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+      // Your Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBHP8E5b9I2yluT-b5aNuBQN2t1bagOYWE",
+        authDomain: "auth-1ec45.firebaseapp.com",
+        projectId: "auth-1ec45",
+        storageBucket: "auth-1ec45.appspot.com",
+        messagingSenderId: "726310079740",
+        appId: "1:726310079740:web:e0c83ecff4dfe9e0afdb79",
+        measurementId: "G-BHPLTK01Q9",
+      };
+
+      // Initialize Firebase app
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const email = document.getElementById("signup_email").value;
+          const password = document.getElementById("signup_password").value;
+
+          // Create user with email and password
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              redirectToSignIn();
+            })
+            .catch((error) => {
+              const errorMessage = error.message;
+              alert(errorMessage);
+            });
+        });
+      console.log(app);
+    </script>
+  </body>
+</html>

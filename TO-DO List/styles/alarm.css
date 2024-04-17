@@ -1,0 +1,202 @@
+#alarmLabel {
+    font-size: 3rem;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#alarm {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    flex-direction: column;
+}
+
+#addAlarmBtn {
+    height: 5rem;
+    width: 5rem;
+    right: 0px;
+    bottom: 0px;
+    position: absolute;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin: 5rem;
+    cursor: pointer;
+    border: none;
+    background-image: url(../assets/addAlarm.png);
+    background-size: contain;
+    background-color: var(--body-color);
+}
+
+.alarm {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    position: relative;
+    height: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alarm-time {
+    font-size: 2rem;
+    padding-right: 1rem;
+}
+
+.alarm-notes {
+    font-size: 1rem;
+}
+
+.alarm-controls {
+    position: absolute;
+    right: 0;
+    padding-right: 5px;
+}
+
+.alarm-edit-btn {
+    margin: 5px;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.alarm-delete-btn {
+    margin: 5px;
+    font-size: 1rem;
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.onOffSwitchContainer {
+    position: absolute;
+}
+
+.onOffSwitchContainer input[type="checkbox"] {
+    display: none;
+}
+
+.onOffSwitchContainer input[type="checkbox"]+label {
+    display: block;
+    position: relative;
+    width: 3em;
+    height: 1.6em;
+    margin-bottom: 20px;
+    background: #e84d4d;
+    border-radius: 0.2em;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transform: translate(-55px, 10px);
+}
+
+.onOffSwitchContainer input[type="checkbox"]+label:before {
+    content: "";
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 0.2em;
+    background: #50565a;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    left: 0.2em;
+    top: 0.2em;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.onOffSwitchContainer input[type="checkbox"]:checked+label {
+    background: #47cf73;
+}
+
+.onOffSwitchContainer input[type="checkbox"]:checked+label:before {
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+    left: 1.6em;
+}
+
+
+
+#alarmForm {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #35363a;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10%;
+    margin: auto;
+    inset: auto;
+}
+
+#alarmForm>label {
+    font-style: bold;
+    color: white;
+    font-size: 1.5rem;
+}
+
+#alarmRepeatLabel {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+input[type="time"],
+input[type="text"] {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    width: 75%;
+    margin: auto;
+}
+
+.repeatSelector label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.alarmModal-controls {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 25px;
+}
+
+.alarmModal-saveBtn {
+    font-size: 2rem;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-right: 2%;
+}
+
+.alarmModal-cancelBtn {
+    font-size: 2rem;
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-right: 2%;
+}

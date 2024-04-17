@@ -1,0 +1,227 @@
+:root {
+  --font-color: 30, 30, 30;
+  --body-color: 53, 54, 58;
+  --theme-primary: 60, 64, 67;
+  --theme-dark: 60, 64, 67;
+  --theme-dark-hover: 41, 43, 45;
+}
+
+main {
+  margin: 0 auto;
+  width: 150vw;
+}
+
+.component {
+  display: none;
+  color: white;
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+}
+
+.component.active {
+  display: block;
+}
+
+body {
+  background-color: rgb(var(--body-color));
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+.todo{
+  flex: 1 1 0%;
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+#nav-toggle {
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 1.0rem;
+  cursor: pointer;
+  border: none;
+  background-image: url(assets/navmenu.png);
+  background-size: contain;
+  background-color: var(--body-color);
+  z-index: 2;
+}
+
+#nav-toggle-layer {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#nav-wrapper {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  transition: backdrop-filter 250ms ease;
+}
+
+#main[data-nav="true"] > #nav-wrapper {
+  backdrop-filter: blur(0.25rem);
+  pointer-events: all;
+}
+
+#nav {
+  background-color: rgb(var(--theme-primary));
+  box-shadow: 0 0 1rem 0.25rem rgba(0 0 0 / 40%);
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  height: fit-content;
+  width: 57.5%;
+  max-width: fit-content;
+  margin-top: 1.25%;
+  position: relative;
+  z-index: 3;
+  transform: translateX(-100%);
+  transition: transform 250ms ease;
+}
+
+#main[data-nav="true"] > #nav-wrapper > #nav {
+  transform: translateX(0);
+}
+
+#nav > .nav-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-size: 900px 1000px;
+}
+
+#nav > .nav-content > .nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-option {
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.nav-option:hover {
+  background-color: #0056b3;
+}
+
+#nav > .nav-content > .nav-header > img {
+  height: 3.5rem;
+}
+
+#nav > .nav-content > .nav-header > .nav-greeting {
+  font-size: 2rem;
+}
+
+#nav > .nav-content > .nav-header > button {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-image: url(assets/closenav.png);
+  background-size: contain;
+  background-color: var(--theme-primary);
+}
+
+#nav > .nav-content > .nav-header > button:hover,
+#nav > .nav-content > .nav-header > button:focus {
+  background-color: rgba(180, 17, 17, 0.15);
+}
+
+#nav > .nav-content > .nav-header > button > i {
+  color: white;
+  font-size: 1.5rem;
+}
+
+#nav > .nav-content .nav-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#nav > .nav-content .nav-options > .nav-option:hover,
+#nav > .nav-content .nav-options > .nav-option:focus {
+  background-color: rgb(var(--theme-dark-hover));
+}
+
+#nav > .nav-content .nav-options > .nav-option > i {
+  color: white;
+  font-size: 2rem;
+}
+
+#nav > .nav-content .nav-options > .nav-option > span {
+  color: white;
+  font-size: 1.5rem;
+}
+
+#nav > .nav-content > .nav-section {
+  margin-top: auto;
+}
+
+#nav > .nav-content > .nav-section > .nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#nav > .nav-content > .nav-section > .nav-buttons > .nav-option {
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+#nav > .nav-content > .nav-section > .nav-buttons > .nav-option:hover {
+  background-color: #4e657e;
+}
+
+#nav > .nav-content > .nav-section > .nav-buttons > .nav-option > span {
+  font-size: 1rem;
+}
+#alarmModal {
+  position: relative;
+    z-index: 1;
+    overflow: visible;
+    height: 50;
+    width: 30;
+    /* text-align: center; */
+    justify-content: center;
+    /* margin: auto; */
+    transform: translate(15%, 10%);
+}

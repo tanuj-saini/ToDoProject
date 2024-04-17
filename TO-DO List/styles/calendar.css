@@ -1,0 +1,127 @@
+:root {
+    --dark: #3c4043;
+    --darkest: rgba(0, 0, 0, 0.4);
+    --light: #ffffff;
+}
+
+#calendar-header {
+    font-size: 3rem;
+}
+
+.calendar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#month-controls {
+    position: relative;
+    float: right;
+    margin-left: auto;
+    margin-right: 5%;
+    bottom: 4.3285%;
+}
+
+#month-controls > button {
+    background-color: #2196F3;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    color: white;
+}
+
+#calendargrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 10px;
+    margin: 10px;
+    width: 90%;
+    height: 75%;
+    background-color: var(--dark);
+    transform: translateY(-4.3285%);
+    overflow: hidden; /* Add this line to prevent overflowing content */
+}
+
+.calendar-cell {
+    border: 1px solid #ccc;
+    padding: 20px;
+    padding-top: 15px;
+    min-height: 80px;
+    position: relative;
+    text-align: right;
+    font-size: 2rem;
+    overflow: auto; /* Add this line to enable scrolling if content exceeds cell height */
+}
+
+.event {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Change this from 10% to 100% */
+    height: 100%; /* Change this from 10% to 100% */
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 5px;
+    overflow: auto;
+}
+
+.event-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#event-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--dark);
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+}
+
+#event-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#event-form input[type="text"],
+#event-form input[type="datetime-local"],
+#event-form textarea {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#event-form button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-event-btn {
+    font-size: 2rem;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-right: 2%;
+    transform: translateY(-4.3285%);
+}

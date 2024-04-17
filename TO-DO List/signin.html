@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: rgb(158, 218, 226);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      @keyframes slide-up {
+        from {
+          transform: translateY(50px); /* Initial position below the screen */
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0); /* Final position at the center */
+          opacity: 1;
+        }
+      }
+
+      .outerbox {
+        width: 400px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        animation: slide-up 1.8s ease-out;
+      }
+
+      .outerbox h2 {
+        text-align: center;
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .innerbox {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .signin-header h1 {
+        font-size: 2.2rem;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .signin-header p {
+        font-size: 14px;
+        color: #666;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .signin-body p {
+        margin: 12px 0;
+      }
+
+      .signin-body p label {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .signin-body p input {
+        width: calc(100% - 24px);
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-top: 4px;
+      }
+
+      .signin-body p input[type="submit"] {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        opacity: 80%;
+      }
+
+      .signin-body p input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      .signin-footer p {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+      }
+
+      .signin-footer p a {
+        color: #007bff;
+        font-weight: bold;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .signin-footer p a:hover {
+        color: #0056b3;
+      }
+    </style>
+    <script>
+      function redirectTomain() {
+        // Redirect to the sign-in page
+        window.location.href = "index.html";
+      }
+    </script>
+    <script>
+      document
+        .getElementById("delayedLink")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          setTimeout(function () {
+            window.location.href = event.target.href;
+          }, 6000);
+        });
+    </script>
+  </head>
+  <body>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+
+    <!-- Sign-in form -->
+    <div class="outerbox">
+      <h2>WELCOME BACK!</h2>
+      <div class="innerbox">
+        <header class="signin-header">
+          <h1>Login</h1>
+          <p>Enter your credentials to access your account.</p>
+        </header>
+        <main class="signin-body">
+          <form id="signinForm" action="#">
+            <p>
+              <label for="login_email"><b>Email</b></label>
+              <input
+                type="email"
+                id="login_email"
+                placeholder="Your email"
+                required
+              />
+            </p>
+            <p>
+              <label for="login_password"
+                ><b><ion-icon name="lock-closed"></ion-icon>Password</b></label
+              >
+              <input
+                type="password"
+                id="login_password"
+                placeholder="Your password"
+                required
+              />
+            </p>
+            <p>
+              <input type="submit" id="signinSubmit" value="Sign In" />
+            </p>
+          </form>
+        </main>
+        <footer class="signin-footer">
+          <p>
+            Don't have an account yet?
+            <a href="signup.html" id="delayedLink"
+              >Sign Up <ion-icon name="person-add"></ion-icon
+            ></a>
+          </p>
+        </footer>
+      </div>
+    </div>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+      // Your Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBHP8E5b9I2yluT-b5aNuBQN2t1bagOYWE",
+        authDomain: "auth-1ec45.firebaseapp.com",
+        projectId: "auth-1ec45",
+        storageBucket: "auth-1ec45.appspot.com",
+        messagingSenderId: "726310079740",
+        appId: "1:726310079740:web:e0c83ecff4dfe9e0afdb79",
+        measurementId: "G-BHPLTK01Q9",
+      };
+
+      // Initialize Firebase app
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      // Handle sign-in form submission
+      document
+        .getElementById("signinForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const email = document.getElementById("login_email").value;
+          const password = document.getElementById("login_password").value;
+
+          // Sign in with email and password
+          signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              const user = userCredential.user;
+
+              redirectTomain();
+            })
+            .catch((error) => {
+              const errorMessage = error.message;
+              alert(errorMessage);
+              document.getElementById("login_email").value = "";
+              document.getElementById("login_password").value = "";
+            });
+        });
+      console.log(app);
+    </script>
+  </body>
+</html>

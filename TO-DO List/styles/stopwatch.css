@@ -1,0 +1,53 @@
+#stopwatch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+}
+
+#stopwatchTitle {
+    font-size: 6vw;
+    border: none;
+}
+
+.stopwatchClock {
+    font-size: 12vw;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#stopwatchControls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stopwatchStartStopBtn {
+    font-size: 2rem;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-right: 1%;
+}
+
+.stopwatchResetBtn {
+    font-size: 2rem;
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 1%;
+}
+
+.stopwatchStartStopBtn:hover,
+.stopwatchResetBtn:hover {
+    background-color: #3f7af9;
+    color: #fff;
+}
